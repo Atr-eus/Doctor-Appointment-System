@@ -8,12 +8,12 @@ using namespace std;
 class Patient : public Person {
 private:
   string blood_pressure;
-  float body_temperature;
+  string body_temperature;
   string symptoms;
 
 public:
-  Patient(const string &, int, const genders &, const string &, float,
-          const string &);
+  Patient(const string &, const string &, const genders &, const string &,
+          const string &, const string &);
   void display() const;
 };
 

@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-Doctor::Doctor(const string &name, int age, const genders &gender,
+Doctor::Doctor(const string &name, const string &age, const genders &gender,
                const string &specialty)
     : Person(name, age, gender), specialty(specialty) {};
 

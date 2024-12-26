@@ -13,7 +13,7 @@ private:
   vector<Appointment> appointments;
 
 public:
-  Doctor(const string &name, int age, const genders &gender,
+  Doctor(const string &name, const string &age, const genders &gender,
          const string &specialty);
 
   void add_appointment(const Appointment &appointment);
