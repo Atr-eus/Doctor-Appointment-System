@@ -14,7 +14,7 @@ void save_login(const string &filename, const string &data,
   ofstream file(filename, ios::app);
   if (file.is_open()) {
     file << data << endl;
-    cout << "Successfully registed as " << username << "." << endl;
+    cout << "Successfully registerd as " << username << "." << endl;
     file.close();
   } else {
     cout << "Failed to open: " << filename << "." << endl;
@@ -50,18 +50,18 @@ void AccountManager::patient_registration() const {
   cout << "Enter your age: ";
   getline(cin, age);
   cout << "Enter your gender: ";
-  getline(cin, age);
-  cout << "Enter your blood pressure: " << endl;
+  getline(cin, gender);
+  cout << "Enter your blood pressure: ";
   getline(cin, blood_pressure);
-  cout << "Enter your body temperature: " << endl;
+  cout << "Enter your body temperature: ";
   getline(cin, body_temperature);
-  cout << "Enter your symptoms: " << endl;
+  cout << "Enter your symptoms: ";
   getline(cin, symptoms);
 
   save_login("patients.txt",
              username + SEPARATOR + password + SEPARATOR + age + SEPARATOR +
-                 gender + blood_pressure + SEPARATOR + body_temperature +
-                 SEPARATOR + symptoms,
+                 gender + SEPARATOR + blood_pressure + SEPARATOR +
+                 body_temperature + SEPARATOR + symptoms,
              username);
 }
 
@@ -136,6 +136,7 @@ void AccountManager::patient_dashboard() const {
   getline(ss, age, SEPARATOR);
   getline(ss, age, SEPARATOR);
   getline(ss, age, SEPARATOR);
+  getline(ss, gender, SEPARATOR);
   getline(ss, blood_pressure, SEPARATOR);
   getline(ss, body_temperature, SEPARATOR);
   getline(ss, symptoms, SEPARATOR);
