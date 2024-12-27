@@ -8,7 +8,7 @@ using namespace std;
 enum genders { male, female };
 
 class Person {
-private:
+protected:
   string name;
   string age;
   genders gender;
@@ -19,7 +19,7 @@ public:
   string get_name() const;
   string get_age() const;
   genders get_gender() const;
-  void add_appointment(Appointment &appointment) const;
+  void show_appointments() const;
   void display() const;
 };
 

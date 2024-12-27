@@ -1,36 +1,11 @@
 #include "../AccountManager.h"
+#include "utils.h"
 #include <algorithm>
-#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 using namespace std;
-
-const char SEPARATOR = '|';
-
-void save_login(const string &filename, const string &data,
-                const string &username) {
-  ofstream file(filename, ios::app);
-  if (file.is_open()) {
-    file << data << endl;
-    cout << "Successfully registerd as " << username << "." << endl;
-    file.close();
-  } else {
-    cout << "Failed to open: " << filename << "." << endl;
-  }
-}
-
-vector<string> read_records(const string &filename) {
-  vector<string> lines;
-  ifstream file(filename);
-  string line;
-  while (getline(file, line)) {
-    lines.push_back(line);
-  }
-  file.close();
-  return lines;
-}
 
 // AccountManager::AccountManager(const string &username, const string
 // &password, const account_type &type) : username(username),
@@ -125,7 +100,7 @@ void AccountManager::patient_dashboard() const {
   vector<string> patient_accounts = read_records("patients.txt");
   string target;
   for (const auto &account : patient_accounts) {
-    if (account.find(user + "|") == 0) {
+    if (account.find(user + SEPARATOR) == 0) {
       target = account;
       break;
     }
@@ -151,19 +126,24 @@ void AccountManager::patient_dashboard() const {
 
   int opt;
   do {
-    cout << "What to do? " << endl;
+    cout << endl << "What to do? " << endl;
     cout << "1. Add appointment." << endl;
-    cout << "2. Logout." << endl;
+    cout << "2. See my appointments." << endl;
+    cout << "3. Logout." << endl;
+    cout << "Enter your choice: ";
     cin >> opt;
     cin.ignore();
 
     if (opt == 1) {
+      patient.add_appointment();
     } else if (opt == 2) {
+      patient.show_appointments();
+    } else if (opt == 3) {
       cout << "Logging out from " << user << "." << endl;
     } else {
       cout << "Invalid choice, try again." << endl;
     }
-  } while (opt != 2);
+  } while (opt != 3);
 }
 
 void AccountManager::doctor_dashboard() const {
@@ -188,6 +168,28 @@ void AccountManager::doctor_dashboard() const {
   Doctor doctor(user, "30", gender == "male" ? genders::male : genders::female,
                 specialty);
   doctor.display();
+
+  int opt;
+  do {
+    cout << endl << "What to do? " << endl;
+    cout << "1. See my appointments." << endl;
+    cout << "2. Update appointment status." << endl;
+    cout << "3. Logout." << endl;
+    cout << "Enter your choice: ";
+    cin >> opt;
+    cin.ignore();
+
+    if (opt == 1) {
+      doctor.show_appointments();
+    } else if (opt == 2) {
+      doctor.show_appointments();
+      doctor.update_appointment();
+    } else if (opt == 3) {
+      cout << "Logging out from " << user << "." << endl;
+    } else {
+      cout << "Invalid choice, try again." << endl;
+    }
+  } while (opt != 3);
 }
 
 void AccountManager::display() const { cout << "hello manager" << endl; }

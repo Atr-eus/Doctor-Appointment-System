@@ -14,6 +14,7 @@ private:
 public:
   Patient(const string &, const string &, const genders &, const string &,
           const string &, const string &);
+  void add_appointment() const;
   void display() const;
 };
 

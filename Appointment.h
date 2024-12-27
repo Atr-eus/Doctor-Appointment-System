@@ -17,11 +17,10 @@ public:
 
   operator string() const {
     ostringstream oss;
-    oss << (day < 10 ? "0" : "") << day << "/" << (month < 10 ? "0" : "")
-        << month << "/" << year;
+    oss << year << "/" << (month < 10 ? "0" : "") << month << "/"
+        << (day < 10 ? "0" : "") << day;
     return oss.str();
   }
-  void display() const { cout << year << "/" << month << "/" << day << endl; }
 };
 
 class Time {
@@ -39,9 +38,6 @@ public:
         << minute << ":" << (second < 10 ? "0" : "") << second;
     return oss.str();
   }
-  void display() const {
-    cout << hour << ":" << minute << ":" << second << endl;
-  }
 };
 
 class Appointment {
@@ -51,7 +47,7 @@ private:
   bool done;
 
 public:
-  Appointment(const Date &, const Time &, bool);
+  Appointment(const Date &date, const Time &time, bool done = false);
 
   void update_staus();
   bool get_status() const;

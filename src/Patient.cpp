@@ -1,12 +1,49 @@
 #include "../Patient.h"
+#include "utils.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 Patient::Patient(const string &n, const string &a, const genders &g,
                  const string &bp, const string &bt, const string &smp)
     : Person(n, a, g), blood_pressure(bp), body_temperature(bt),
       symptoms(smp) {};
+
+void Patient::add_appointment() const {
+  string doctor_name, date, time;
+
+  cout << "Enter doctor's name you'd like an appointment with: ";
+  getline(cin, doctor_name);
+  vector<string> doctor_accounts = read_records("doctors.txt");
+  bool found = false;
+  for (auto &account : doctor_accounts) {
+    if (account.find(doctor_name + SEPARATOR) == 0) {
+      found = true;
+      break;
+    }
+  }
+  if (!found) {
+    cout << "That doctor is not on our database." << endl;
+    return;
+  }
+
+  cout << "Enter appointment date: ";
+  getline(cin, date);
+  cout << "Enter appointment time: ";
+  getline(cin, time);
+
+  ofstream file("appointments.txt", ios::app);
+  if (file.is_open()) {
+    file << name << SEPARATOR << doctor_name << SEPARATOR << date << SEPARATOR
+         << time << SEPARATOR << "not_done" << endl;
+    file.close();
+    cout << "Booked appointment with " << doctor_name << " on " << date
+         << " at " << time << "." << endl;
+  } else {
+    cout << "Failed to open file appointments.txt" << endl;
+  }
+}
 
 void Patient::display() const {
   Person::display();

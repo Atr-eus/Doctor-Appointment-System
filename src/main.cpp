@@ -6,15 +6,15 @@
 using namespace std;
 
 int main() {
-  cout << "  .-----." << endl;
-  cout << " ( o   o )" << endl;
-  cout << "  |  ^  | " << endl;
-  cout << "  | '-' |  " << endl;
-  cout << "   -----   " << endl;
-  cout << "  /     \\ " << endl;
-  cout << " /       \\ " << endl;
-  cout << "/  O O O  \\ " << endl;
-  cout << "|   DOC   |" << endl;
+  cout << "  .-----." << endl
+       << " ( o   o )" << endl
+       << "  |  ^  | " << endl
+       << "  | '-' |  " << endl
+       << "   -----   " << endl
+       << "  /     \\ " << endl
+       << " /       \\ " << endl
+       << "/  O O O  \\ " << endl
+       << "|   DOC   |" << endl;
   cout << "Welcome to the doctor's appointment system." << endl << endl;
 
   int opt;
@@ -45,17 +45,6 @@ int main() {
       cout << "Invalid choice, try again." << endl;
     }
   } while (opt != 4);
-
-  cout << endl << endl << endl;
-  Patient p("John Doe", "22", genders::male, "120/80", "37.4",
-            "chest pain, puking, headache");
-  p.display();
-  Appointment ap(Date(2024, 25, 12), Time(16, 31, 10), false);
-  ap.display();
-
-  Doctor d("Mike Hawk", "30", genders::female, "Neurologist");
-  d.add_appointment(ap);
-  d.display();
 
   return 0;
 }
