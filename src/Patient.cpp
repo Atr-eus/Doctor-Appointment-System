@@ -1,6 +1,7 @@
 #include "../Patient.h"
 #include "utils.h"
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -12,10 +13,20 @@ Patient::Patient(const string &n, const string &a, const genders &g,
 
 void Patient::add_appointment() const {
   string doctor_name, date, time;
+  vector<string> doctor_accounts = read_records("doctors.txt");
+  cout << endl << "Doctors in our database: " << endl;
+  for (auto &account : doctor_accounts) {
+    istringstream iss(account);
+    string n, p, g, specialties;
+    if (getline(iss, n, SEPARATOR) && getline(iss, p, SEPARATOR) &&
+        getline(iss, g, SEPARATOR) && getline(iss, specialties)) {
+      cout << "Name: " << n << endl;
+      cout << "Specialties: " << specialties << endl;
+    }
+  }
 
   cout << "Enter doctor's name you'd like an appointment with: ";
   getline(cin, doctor_name);
-  vector<string> doctor_accounts = read_records("doctors.txt");
   bool found = false;
   for (auto &account : doctor_accounts) {
     if (account.find(doctor_name + SEPARATOR) == 0) {
