@@ -32,10 +32,10 @@ void Person::show_appointments() const {
         cout << "Patient: " << patient_name << endl;
         cout << "Doctor: " << doctor_name << endl;
 
+        none_found = false;
         int y, m, d, h, min, s;
         if (sscanf(date.c_str(), "%d/%d/%d", &y, &m, &d) == 3 &&
             sscanf(time.c_str(), "%d:%d:%d", &h, &min, &s)) {
-          none_found = false;
           Appointment app(Date(y, m, d), Time(h, min, s),
                           is_done == "done" ? true : false);
           app.display();
