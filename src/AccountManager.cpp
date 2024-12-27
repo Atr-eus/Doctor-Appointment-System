@@ -58,7 +58,7 @@ bool AccountManager::patient_login() {
     getline(ss, p, SEPARATOR);
 
     if (username == u && password == p) {
-      cout << "Logged in as " << username << "." << endl;
+      cout << endl << "Logged in as " << username << "." << endl;
       user = username;
       return true;
     }
@@ -86,7 +86,7 @@ bool AccountManager::doctor_login() {
     getline(ss, p, SEPARATOR);
 
     if (username == u && password == p) {
-      cout << "Logged in as " << username << "." << endl;
+      cout << endl << "Logged in as " << username << "." << endl;
       user = username;
       return true;
     }
@@ -126,7 +126,7 @@ void AccountManager::patient_dashboard() const {
 
   int opt;
   do {
-    cout << endl << "What to do? " << endl;
+    cout << "What to do? " << endl;
     cout << "1. Add appointment." << endl;
     cout << "2. See my appointments." << endl;
     cout << "3. Logout." << endl;
@@ -165,13 +165,13 @@ void AccountManager::doctor_dashboard() const {
 
   transform(gender.begin(), gender.end(), gender.begin(),
             [](unsigned char c) { return tolower(c); });
-  Doctor doctor(user, "30", gender == "male" ? genders::male : genders::female,
+  Doctor doctor(user, "0", gender == "male" ? genders::male : genders::female,
                 specialty);
   doctor.display();
 
   int opt;
   do {
-    cout << endl << "What to do? " << endl;
+    cout << "What to do? " << endl;
     cout << "1. See my appointments." << endl;
     cout << "2. Update appointment status." << endl;
     cout << "3. Logout." << endl;

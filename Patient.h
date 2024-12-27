@@ -12,8 +12,9 @@ private:
   string symptoms;
 
 public:
-  Patient(const string &, const string &, const genders &, const string &,
-          const string &, const string &);
+  Patient(const string &name, const string &age, const genders &gender,
+          const string &blood_pressure, const string &body_temperature,
+          const string &symptoms);
   void add_appointment() const;
   void display() const;
 };

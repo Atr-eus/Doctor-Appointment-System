@@ -20,6 +20,7 @@ void Person::show_appointments() const {
   vector<string> appointments = read_records("appointments.txt");
   int c = 1;
   bool none_found = true;
+  cout << endl;
   for (auto &appointment : appointments) {
     istringstream iss(appointment);
     string patient_name, doctor_name, date, time, is_done;
@@ -29,8 +30,9 @@ void Person::show_appointments() const {
         getline(iss, time, SEPARATOR) && getline(iss, is_done)) {
       if (name == patient_name || name == doctor_name) {
         cout << "Appointment " << c++ << ":" << endl;
-        cout << "Patient: " << patient_name << endl;
         cout << "Doctor: " << doctor_name << endl;
+        Patient patient = get_patient_data(patient_name);
+        patient.display();
 
         none_found = false;
         int y, m, d, h, min, s;
@@ -55,6 +57,8 @@ void Person::show_appointments() const {
 
 void Person::display() const {
   cout << "Name: " << name << endl;
-  cout << "Age: " << age << endl;
+  if (age != "0") {
+    cout << "Age: " << age << endl;
+  }
   cout << "Gender: " << (gender ? "female" : "male") << endl;
 }
