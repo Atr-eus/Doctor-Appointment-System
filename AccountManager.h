@@ -11,13 +11,8 @@ enum account_type { patient, doctor };
 class AccountManager {
 private:
   string user;
-  // string password;
-  // account_type type;
 
 public:
-  // AccountManager(const string &username, const string &password, const
-  // account_type &type);
-
   void patient_registration() const;
   bool patient_login();
   bool patient_logout();

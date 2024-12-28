@@ -1,7 +1,4 @@
 #include "../AccountManager.h"
-#include "../Appointment.h"
-#include "../Doctor.h"
-#include "../Patient.h"
 #include <iostream>
 using namespace std;
 

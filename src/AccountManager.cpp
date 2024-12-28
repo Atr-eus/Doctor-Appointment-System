@@ -7,10 +7,6 @@
 #include <vector>
 using namespace std;
 
-// AccountManager::AccountManager(const string &username, const string
-// &password, const account_type &type) : username(username),
-// password(password), type(type) {};
-
 void AccountManager::patient_registration() const {
   cout << "Patient registration." << endl;
 
