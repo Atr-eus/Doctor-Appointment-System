@@ -26,7 +26,7 @@ Appointment::Appointment(const Date &d, const Time &t, bool done)
 void Appointment::display() const {
   string d = date, t = time;
 
-  cout << "Date: " << d << endl;
-  cout << "Time: " << t << endl;
+  cout << "Date (yyyy/mm/dd): " << d << endl;
+  cout << "Time (hh:mm:ss): " << t << endl;
   cout << "Done: " << (done ? "Yes" : "No") << endl;
 }

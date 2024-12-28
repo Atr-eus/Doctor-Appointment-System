@@ -6,8 +6,6 @@
 #include <string>
 using namespace std;
 
-enum account_type { patient, doctor };
-
 class AccountManager {
 private:
   string user;

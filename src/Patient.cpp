@@ -39,9 +39,9 @@ void Patient::add_appointment() const {
     return;
   }
 
-  cout << "Enter appointment date: ";
+  cout << "Enter appointment date (yyyy/mm/dd): ";
   getline(cin, date);
-  cout << "Enter appointment time: ";
+  cout << "Enter appointment time (hh:mm:ss): ";
   getline(cin, time);
 
   ofstream file("appointments.txt", ios::app);
