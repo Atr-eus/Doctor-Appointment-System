@@ -59,6 +59,6 @@ void Patient::add_appointment() const {
 void Patient::display() const {
   Person::display();
   cout << "Blood pressure: " << blood_pressure << endl;
-  cout << "Body temperature: " << blood_pressure << endl;
+  cout << "Body temperature: " << body_temperature << endl;
   cout << "Symptoms: " << symptoms << endl;
 }
